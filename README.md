@@ -16,3 +16,22 @@ minikube service <name>
 ``` 
 
 to open browser or add `--url` flag to output service URL to terminal.
+
+## How to use local images for a Deployment
+
+Specify `imagePullPolicy: IfNotPresent` for your container
+
+```yaml
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    spec:
+      containers:
+        - name: NAME
+          image: IMAGE_NAME
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+```
