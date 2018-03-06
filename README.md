@@ -12,7 +12,7 @@ LoadBalancer services run fine on minikube, just with no real external load bala
 LoadBalancer services get a node port assigned too so you can access services via 
 
 ```sh
-minikube service <name> to open browser
+minikube service <name>
 ``` 
 
-or add `--url` flag to output service URL to terminal.
+to open browser or add `--url` flag to output service URL to terminal.
