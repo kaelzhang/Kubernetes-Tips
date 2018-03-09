@@ -38,7 +38,9 @@ spec:
 
 ## Why there is no `ADDRESS` of my Ingress when kubectl get ing?
 
-The yaml file of `Kind: Ingress` specify the rules of your load balancer. But the load balancer itself is provisioned by `ingress-nginx-controller` or other controllers implemented by your cloud service, such as GCE, AWS, Azure, Aliyun, Qcloud, etc.
+The yaml file of `Kind: Ingress` specify the rules of your load balancer. 
+
+But the load balancer itself should be provisioned by `ingress-nginx-controller` or other controllers implemented by your cloud service, such as GCE, AWS, Azure, Aliyun, Qcloud, etc.
 
 So, if you want to create an Ingress on your own, you need to deploy an `ingress-nginx-controller` and a service (which is usually listening port `80`) for it.
 
