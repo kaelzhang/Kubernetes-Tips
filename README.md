@@ -48,9 +48,15 @@ Check [this article](https://hackernoon.com/setting-up-nginx-ingress-on-kubernet
 
 # 中国特色
 
-## 在云服务器上，尝试使用国外镜像，但是由于 “技术愿意” 下载失败
+## 在云服务器上，尝试使用国外镜像，但是由于 “技术原因” 下载失败
 
-可以简单的包装国外镜像
+常见错误
+
+```
+TLS shakehand timeout
+```
+
+1. 简单的包装国外镜像
 
 Dockerfile
 
@@ -58,4 +64,6 @@ Dockerfile
 FROM gcr.io/foo/bar:1.0
 ```
 
-然后上传到国内的 registry（hub） 或私有 registry。你也可以 [自己搭建](https://github.com/vmware/harbor)。
+2. 在本地，或者使用能够 “科学上网” 的构建环境构建（docker build）镜像
+
+3. 然后上传到国内的 registry（hub） 或私有 registry。你也可以 [自己搭建](https://github.com/vmware/harbor)。
