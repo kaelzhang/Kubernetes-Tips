@@ -40,11 +40,36 @@ spec:
 
 The yaml file of `Kind: Ingress` specify the rules of your load balancer.
 
-But the load balancer itself should be provisioned by `ingress-nginx-controller` or other controllers implemented by your cloud provider, such as GCE, AWS, Azure, Aliyun, Qcloud, etc.
+But the load balancer itself should be provisioned by `ingress-nginx-controller` or other controllers implemented by your Cloud Provider, such as GCE, AWS, Azure, Aliyun, Qcloud, etc.
 
 So, if you want to create an Ingress on your own, you need to deploy an `ingress-nginx-controller` and a service (which is usually listening port `80`) for it.
 
 Check [this article](https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45) for how-to.
+
+## How the hell to self-deploy ingress on bare metal without Cloud Provider's support?
+
+Check [this](https://github.com/kubernetes/ingress-nginx/tree/master/deploy)
+
+## How to make ingress-nginx-controller listen to port 80
+
+For small clusters, does not even expose port 80 on host network? WTF!
+
+Add `hostNetwork: true` to [`with-rbac.yaml`](https://github.com/kubernetes/ingress-nginx/blob/master/deploy/with-rbac.yaml)
+
+```yaml
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      serviceAccountName: nginx-ingress-serviceaccount
+      hostNetwork: true
+      containers:
+        - name: nginx-ingress-controller
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.11.0
+...
+```
 
 # 中国特色
 
