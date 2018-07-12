@@ -71,6 +71,12 @@ spec:
 ...
 ```
 
+## Minikube fails to start after (brew cask) upgrade?
+
+- delete `~/.minikube`
+- Maybe you need to teminate the process of VMBox which is locking the old version of minikube
+- Maybe you need to upgrade kubernetes (`brew upgrade kubernetes-cli`)
+
 # 中国特色
 
 ## 在云服务器上，尝试使用国外镜像，但是由于 “技术原因” 下载失败
