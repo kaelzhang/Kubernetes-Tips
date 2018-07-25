@@ -77,6 +77,22 @@ spec:
 - Maybe you need to terminate the process of VMBox (or other virtual machines) which is locking the old version of minikube
 - Maybe you need to upgrade kubernetes (`brew upgrade kubernetes-cli`)
 
+## Helm install: Error: no available release name found
+
+```sh
+$ helm install nginx-ingress
+
+Error: no available release name found
+```
+
+This usually happens when using helm with an old kubernetes version. Solution:
+
+```sh
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```
+
 # 中国特色
 
 ## 在云服务器上，尝试使用国外镜像，但是由于 “技术原因” 下载失败
