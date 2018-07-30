@@ -102,6 +102,12 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
+## What is the install order of helm tiller?
+
+The order of helm install is handled by tiller.
+
+See [here](https://github.com/helm/helm/blob/master/pkg/tiller/kind_sorter.go#L29)
+
 # 中国特色
 
 ## 在云服务器上，尝试使用国外镜像，但是由于 “技术原因” 下载失败
