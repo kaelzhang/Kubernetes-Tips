@@ -103,6 +103,10 @@ $ helm install nginx-ingress
 Error: no available release name found
 ```
 
+And also:
+
+## Error: configmaps is forbidden: User "system:serviceaccount:kube-system:default" cannot list configmaps in the namespace "kube-system"
+
 This usually happens when using helm with an old kubernetes version. Solution:
 
 ```sh
@@ -117,7 +121,25 @@ The order of helm install is handled by tiller.
 
 See [here](https://github.com/helm/helm/blob/master/pkg/tiller/kind_sorter.go#L29)
 
+##
+
 # 中国特色
+
+## 因为 helm stable charts registry 被墙，而无法安装 helm charts
+
+```sh
+helm init \
+  --tiller-image kaelz/tiller:2.9.1 \
+  --stable-repo-url https://charts.ost.ai
+```
+
+如果之前安装过 tiller，但是 tiller 已经安装失败：
+
+```sh
+helm init \
+  --tiller-image kaelz/tiller:2.9.1 \
+  --upgrade
+```
 
 ## 在云服务器上，尝试使用国外镜像，但是由于 “技术原因” 下载失败
 
