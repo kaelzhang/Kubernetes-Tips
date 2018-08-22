@@ -82,9 +82,18 @@ helm install \
 
 ## Minikube fails to start after (brew cask) upgrade?
 
-- delete `~/.minikube`
+```sh
+minikube delete
+rm -rf ~/.minikube
+brew cask reinstall minikube
+```
+
 - Maybe you need to terminate the process of VMBox (or other virtual machines) which is locking the old version of minikube
-- Maybe you need to upgrade kubernetes (`brew upgrade kubernetes-cli`)
+- Maybe you need to upgrade kubernetes
+
+```sh
+brew upgrade kubernetes-cli
+```
 
 ## Helm install: Error: no available release name found
 
