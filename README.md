@@ -129,7 +129,7 @@ See [here](https://github.com/helm/helm/blob/master/pkg/tiller/kind_sorter.go#L2
 
 ```sh
 helm init \
-  --tiller-image kaelz/tiller:2.9.1 \
+  --tiller-image kaelz/tiller:2.11.0 \
   --stable-repo-url https://charts.ost.ai
 ```
 
