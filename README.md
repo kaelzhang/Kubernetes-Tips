@@ -121,7 +121,15 @@ The order of helm install is handled by tiller.
 
 See [here](https://github.com/helm/helm/blob/master/pkg/tiller/kind_sorter.go#L29)
 
-##
+## Error: could not get apiVersions from Kubernetes: unable to retrieve the complete list of server APIs: domain.com/version: the server is currently unable to handle the request
+
+The apiservice of kubernetes is not configured correctly. 
+
+```sh
+kubectl get apiservice
+```
+to see if there are any unavailable apiservices, and delete them by names
+
 
 # 中国特色
 
